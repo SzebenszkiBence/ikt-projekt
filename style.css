@@ -5,20 +5,23 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 }
+
+
+
 body {
     display: flex;
     padding: 0 10px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #5E63BA;
+    background: #343770;
 }
 .container {
     display: flex;
     width: 850px;
     gap: 70px;
     padding: 60px 40px;
-    background: #fff;
+    background: #e0d2d2;
     border-radius: 10px;
     align-items: flex-end;
     justify-content: space-between;
