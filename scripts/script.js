@@ -7,7 +7,9 @@ const playAgainBtn = gameModal.querySelector("button");
 const hintText = document.querySelector(".hint-text b");
 
 let currentWord, currentHint, correctLetters, wrongGuessCount;
-const maxGuesses = 8;
+const maxGuesses = 10;
+
+const letters = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
 
 const resetGame = () => {
     correctLetters = [];
@@ -28,9 +30,9 @@ const getRandomWord = () => {
 }
 
 const gameOver = (isVictory) => {
-    const modalText = isVictory ? `You found the word:` : 'The correct word was:';
+    const modalText = isVictory ? `Kitaláltad:` : 'A helyes válasz:';
     gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? 'Congrats!' : 'Game Over!';
+    gameModal.querySelector("h4").innerText = isVictory ? 'Gratulálok!' : 'Nem talált!';
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 }
@@ -60,12 +62,12 @@ const initGame = (button, clickedLetter) => {
     if (correctLetters.length === currentWord.length) return gameOver(true);
 }
 
-for (let i = 97; i <= 122; i++) {
+letters.split("").forEach(char => {
     const button = document.createElement("button");
-    button.innerText = String.fromCharCode(i);
+    button.innerText = char;
     keyboardDiv.appendChild(button);
-    button.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
-}
+    button.addEventListener("click", (e) => initGame(e.target, char));
+});
 
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
