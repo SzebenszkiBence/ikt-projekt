@@ -4,10 +4,10 @@ const keyboardDiv = document.querySelector(".keyboard");
 const hangmanImage = document.querySelector(".hangman-box img");
 const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
-const hintText = document.querySelector(".hint-text b"); // Hint szöveg eleme
 
-let currentWord, currentHint, correctLetters, wrongGuessCount;
-const maxGuesses = 8;
+
+let currentWord, correctLetters, wrongGuessCount;
+const maxGuesses = 6;
 
 const resetGame = () => {
     correctLetters = [];
@@ -16,7 +16,6 @@ const resetGame = () => {
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
     wordDisplay.innerHTML = currentWord.split("").map(() => `<li class="letter"></li>`).join("");
     keyboardDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
-    hintText.innerText = ""; // Tipp szöveg alaphelyzetbe állítása
     gameModal.classList.remove("show");
 }
 
@@ -28,9 +27,10 @@ const getRandomWord = () => {
 }
 
 const gameOver = (isVictory) => {
+    
     const modalText = isVictory ? `You found the word:` : 'The correct word was:';
     gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? 'Congrats!' : 'Game Over!';
+    gameModal.querySelector("h4").innerText = isVictory ? 'Gratulálok!' : 'Nem talált!';
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 }
@@ -47,11 +47,6 @@ const initGame = (button, clickedLetter) => {
     } else {
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
-
-        // Tipp megjelenítése 3 rossz találat után
-        if (wrongGuessCount === 3) {
-            hintText.innerText = currentHint; // Hint megjelenítése
-        }
     }
     button.disabled = true;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
@@ -60,12 +55,13 @@ const initGame = (button, clickedLetter) => {
     if (correctLetters.length === currentWord.length) return gameOver(true);
 }
 
+
 for (let i = 97; i <= 122; i++) {
     const button = document.createElement("button");
-    button.innerText = String.fromCharCode(i);
+    button.innerText = char;
     keyboardDiv.appendChild(button);
-    button.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
-}
+    button.addEventListener("click", (e) => initGame(e.target, char));
+});
 
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
