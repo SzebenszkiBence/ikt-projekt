@@ -4,10 +4,12 @@ const keyboardDiv = document.querySelector(".keyboard");
 const hangmanImage = document.querySelector(".hangman-box img");
 const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
+const hintText = document.querySelector(".hint-text b");
 
-
-let currentWord, correctLetters, wrongGuessCount;
+let currentWord, currentHint, correctLetters, wrongGuessCount;
 const maxGuesses = 6;
+
+const letters = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
 
 const resetGame = () => {
     correctLetters = [];
@@ -16,6 +18,7 @@ const resetGame = () => {
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
     wordDisplay.innerHTML = currentWord.split("").map(() => `<li class="letter"></li>`).join("");
     keyboardDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
+    hintText.innerText = "";
     gameModal.classList.remove("show");
 }
 
@@ -27,10 +30,9 @@ const getRandomWord = () => {
 }
 
 const gameOver = (isVictory) => {
-    
     const modalText = isVictory ? `You found the word:` : 'The correct word was:';
     gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? 'Gratulálok!' : 'Nem talált!';
+    gameModal.querySelector("h4").innerText = isVictory ? 'Congrats!' : 'Game Over!';
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 }
@@ -47,6 +49,10 @@ const initGame = (button, clickedLetter) => {
     } else {
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
+
+        if (wrongGuessCount === 3) {
+            hintText.innerText = currentHint;
+        }
     }
     button.disabled = true;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
@@ -55,8 +61,7 @@ const initGame = (button, clickedLetter) => {
     if (correctLetters.length === currentWord.length) return gameOver(true);
 }
 
-
-for (let i = 97; i <= 122; i++) {
+letters.split("").forEach(char => {
     const button = document.createElement("button");
     button.innerText = char;
     keyboardDiv.appendChild(button);

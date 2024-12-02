@@ -7,13 +7,44 @@
 }
 body {
     display: flex;
+    flex-direction: column; 
     padding: 0 10px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background: #5E63BA;
 }
+
+.header {
+    width: 100%;
+    background-color: #4C51A5;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    max-width: 50px;
+    height: auto;
+}
+
+.site-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 .container {
+    margin-top: 20px;
     display: flex;
     width: 850px;
     gap: 70px;
@@ -22,7 +53,7 @@ body {
     border-radius: 10px;
     align-items: flex-end;
     justify-content: space-between;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 .hangman-box img {
     user-select: none;
