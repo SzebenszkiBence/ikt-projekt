@@ -29,36 +29,35 @@ const wordList = [
         hint: "Az év egyik évszaka, a tél utáni időszak."
     },
     {
-        word: "Kihívás",
+        word: "kihívás",
         hint: "Olyan feladat, amely erőfeszítést, kitartást igényel, és nem könnyű teljesíteni"
     },
     {
-        word: "Szorgalom",
+        word: "szorgalom",
         hint: "Kemény munka, kitartás, amit az ember arra fordít, hogy elérje céljait."
     },
     {
-        word: "Becsület",
+        word: "becsület",
         hint: "Az erkölcsi tisztesség, amit az emberek saját maguknak és másoknak megőriznek."
     }, 
     {
-        word: "Alázat",
+        word: "alázat",
         hint: " Az a tulajdonság, hogy valaki nem tekinti magát másoknál fontosabbnak, és tisztelettel viszonyul másokhoz."
     },
     {
-        word: "Táska",
+        word: "táska",
         hint: "Olyan eszköz, amelyet az emberek arra használnak, hogy kisebb dolgokat tartsanak benne és magukkal vigyék."
     },
     {
-        word: "Fáklya",
+        word: "fáklya",
         hint: "Olyan fényforrás, amelyet kézben lehet tartani, gyakran gyújtottak meg tábortüzeknél vagy ünnepeken."
     },
     {
-        word: "Zsák",
+        word: "zsák",
         hint: "Egy olyan nagy, erős anyagból készült tartó, amelybe különféle dolgokat lehet tenni."
     },
     {
-        word: "Híd",
+        word: "híd",
         hint: "Olyan építmény, amely lehetővé teszi, hogy átjussunk egy vízfolyás, szakadék vagy más akadály fölött."
     },
   ];
->>>>>>> 18d4ee4c3c30e45f51715462f17459a1238e6a1c

@@ -7,35 +7,36 @@ const playAgainBtn = gameModal.querySelector("button");
 const hintText = document.querySelector(".hint-text b");
 
 let currentWord, currentHint, correctLetters, wrongGuessCount;
-const maxGuesses = 6;
-
-const letters = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
+const maxGuesses = 10;
 
 const resetGame = () => {
     correctLetters = [];
     wrongGuessCount = 0;
     hangmanImage.src = "images/hangman-0.svg";
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
-    wordDisplay.innerHTML = currentWord.split("").map(() => `<li class="letter"></li>`).join("");
-    keyboardDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
     hintText.innerText = "";
+    wordDisplay.innerHTML = currentWord
+        .split("")
+        .map(() => `<li class="letter"></li>`)
+        .join("");
+    keyboardDiv.querySelectorAll("button").forEach((btn) => (btn.disabled = false));
     gameModal.classList.remove("show");
-}
+};
 
 const getRandomWord = () => {
     const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
     currentWord = word;
     currentHint = hint;
     resetGame();
-}
+};
 
 const gameOver = (isVictory) => {
-    const modalText = isVictory ? `You found the word:` : 'The correct word was:';
-    gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? 'Congrats!' : 'Game Over!';
+    const modalText = isVictory ? `Eltaláltad:` : "A helyes válasz:";
+    gameModal.querySelector("img").src = `images/${isVictory ? "victory" : "lost"}.gif`;
+    gameModal.querySelector("h4").innerText = isVictory ? "Gratulálok!" : "Game Over!";
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
-}
+};
 
 const initGame = (button, clickedLetter) => {
     if (currentWord.includes(clickedLetter)) {
@@ -54,19 +55,24 @@ const initGame = (button, clickedLetter) => {
             hintText.innerText = currentHint;
         }
     }
+
     button.disabled = true;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
 
     if (wrongGuessCount === maxGuesses) return gameOver(false);
     if (correctLetters.length === currentWord.length) return gameOver(true);
-}
+};
 
-letters.split("").forEach(char => {
-    const button = document.createElement("button");
-    button.innerText = char;
-    keyboardDiv.appendChild(button);
-    button.addEventListener("click", (e) => initGame(e.target, char));
-});
+const generateKeyboard = () => {
+    const letters = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
+    letters.split("").forEach((char) => {
+        const button = document.createElement("button");
+        button.innerText = char;
+        keyboardDiv.appendChild(button);
+        button.addEventListener("click", (e) => initGame(e.target, char));
+    });
+};
 
+generateKeyboard();
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);

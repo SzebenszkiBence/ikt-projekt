@@ -7,22 +7,28 @@
 }
 body {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Fejléc miatt oszlop irány */
     padding: 0 10px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #5E63BA;
+    background: #112b2b;
 }
+
 .header {
     width: 100%;
-    background-color: #4C51A5;
+    background-color: #00ff00;
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-content: space-between; /* Középre igazítás és balra helyezés */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék */
+    position: fixed; /* A fejléc rögzítése a lap tetejére */
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -35,14 +41,16 @@ body {
 }
 
 .site-title {
+    flex: 1;
     color: #fff;
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
+    text-align: center; /* Középre igazított cím */
 }
 
 .container {
-    margin-top: 20px;
+    margin-top: 85px; /* A fejléc alá igazítás */
     display: flex;
     width: 850px;
     gap: 70px;
@@ -51,18 +59,21 @@ body {
     border-radius: 10px;
     align-items: flex-end;
     justify-content: space-between;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 .hangman-box img {
     user-select: none;
     max-width: 270px;
 }
+
 .hangman-box h1 {
     font-size: 1.45rem;
     text-align: center;
     margin-top: 20px;
     text-transform: uppercase;
 }
+
 .game-box .word-display {
     gap: 10px;
     list-style: none;
@@ -104,7 +115,7 @@ body {
     justify-content: center;
 }
 :where(.game-modal, .keyboard) button {
-    color: #fff;
+    color: #ffffff;
     border: none;
     outline: none;
     cursor: pointer;
@@ -112,7 +123,7 @@ body {
     font-weight: 600;
     border-radius: 4px;
     text-transform: uppercase;
-    background: #5E63BA;
+    background: #00ff00;
 }
 .keyboard button {
     padding: 7px;
@@ -123,7 +134,7 @@ body {
     opacity: 0.6;
 }
 :where(.game-modal, .keyboard) button:hover {
-    background: #8286c9;
+    background: #112b2b;
 }
 .game-modal {
     position: fixed;
