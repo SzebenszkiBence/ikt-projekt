@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 }
-
-
 
 body {
     display: flex;
@@ -15,18 +14,17 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #343770, #112b2b);
-
+    background: linear-gradient(to bottom, #283c86, #45a247);
 }
 
 .header {
     width: 100%;
-    background-color: #00ff00;
+    background-color: #4CAF50;
     padding: 10px 20px;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
@@ -46,7 +44,7 @@ body {
 
 .site-title {
     flex: 1;
-    color: #fff;
+    color: #ffffff;
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -59,7 +57,7 @@ body {
     width: 850px;
     gap: 70px;
     padding: 60px 40px;
-    background: #e0d2d2;
+    background: #f7f7f7;
     border-radius: 10px;
     align-items: flex-end;
     justify-content: space-between;
@@ -87,6 +85,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .word-display .letter {
     width: 28px;
     font-size: 2rem;
@@ -97,24 +96,29 @@ body {
     border-bottom: 3px solid #2c3e50;
     color: #2c3e50;
 }
+
 .word-display .letter.guessed {
     margin: -40px 0 35px;
     border-color: transparent;
-    color: #28a745;
+    color: #4CAF50;
 }
+
 .game-box h4 {
     text-align: center;
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 15px;
-    color: #112b2b;
+    color: #283c86;
 }
+
 .game-box h4 b {
     font-weight: 600;
 }
+
 .game-box .guesses-text b {
     color: #ff0000;
 }
+
 .game-box .keyboard {
     display: flex;
     gap: 5px;
@@ -122,6 +126,7 @@ body {
     margin-top: 40px;
     justify-content: center;
 }
+
 :where(.game-modal, .keyboard) button {
     color: #ffffff;
     border: none;
@@ -131,19 +136,23 @@ body {
     font-weight: 600;
     border-radius: 4px;
     text-transform: uppercase;
-    background: #00ff00;
+    background: #4CAF50;
 }
+
 .keyboard button {
     padding: 7px;
     width: calc(100% / 9 - 5px);
 }
+
 .keyboard button[disabled] {
     pointer-events: none;
     opacity: 0.6;
 }
+
 :where(.game-modal, .keyboard) button:hover {
-    background: #112b2b;
+    background: #283c86;
 }
+
 .game-modal {
     position: fixed;
     top: 0;
@@ -152,7 +161,7 @@ body {
     height: 100%;
     opacity: 0;
     pointer-events: none;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,39 +169,47 @@ body {
     padding: 0 10px;
     transition: opacity 0.4s ease;
 }
+
 .game-modal.show {
     opacity: 1;
     pointer-events: auto;
     transition: opacity 0.4s 0.4s ease;
 }
+
 .game-modal .content {
     padding: 30px;
     max-width: 420px;
     width: 100%;
     border-radius: 10px;
-    background: #fff;
+    background: linear-gradient(to bottom, #ffffff, #d4f1f4);
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 .game-modal img {
     max-width: 130px;
     margin-bottom: 20px;
 }
+
 .game-modal img[src="images/victory.gif"] {
     margin-left: -10px;
 }
+
 .game-modal h4 {
     font-size: 1.53rem;
 }
+
 .game-modal p {
     font-size: 1.15rem;
     margin: 15px 0 30px;
     font-weight: 500;
 }
+
 .game-modal p b {
-    color: #5E63BA;
+    color: #283c86;
     font-weight: 600;
 }
+
 .game-modal button {
     padding: 12px 23px;
 }
@@ -232,6 +249,7 @@ body {
         padding: 10px 18px;
     }
 }
+
 .tic-tac-toe-container {
     margin-top: 250px;
     text-align: center;
@@ -240,19 +258,19 @@ body {
 .tic-tac-toe-container h2 {
     display: inline-block;
     position: relative;
-    background-color: #5E63BA; /* Sáv színe */
-    color: white; /* Szöveg színe */
+    background-color: #283c86;
+    color: white;
     padding: 10px 20px;
     font-size: 2rem;
     font-weight: bold;
     border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(5, 80px); /* 5 oszlop */
-    grid-template-rows: repeat(5, 80px); /* 5 sor */
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(5, 80px);
     gap: 5px;
     margin: 20px auto;
     justify-content: center;
@@ -262,13 +280,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f1f1f1;
-    border: 2px solid #000;
-    font-size: 1.5rem; /* Kisebb méret az 5x5-höz */
+    background-color: #ffffff;
+    border: 2px solid #4CAF50;
+    font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     user-select: none;
-    width: 80px; /* Méret a CSS rácshoz igazítva */
+    width: 80px;
     height: 80px;
 }
 
@@ -276,11 +294,10 @@ body {
     pointer-events: none;
 }
 
-
 .reset-btn {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #5E63BA;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -288,7 +305,7 @@ body {
 }
 
 .reset-btn:hover {
-    background-color: #8286c9;
+    background-color: #45a049;
 }
 
 .game-status {
