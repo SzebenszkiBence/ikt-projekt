@@ -224,3 +224,67 @@ body {
         padding: 10px 18px;
     }
 }
+.tic-tac-toe-container {
+    margin-top: 250px;
+    text-align: center;
+}
+
+.tic-tac-toe-container h2 {
+    display: inline-block;
+    position: relative;
+    background-color: #5E63BA; /* Sáv színe */
+    color: white; /* Szöveg színe */
+    padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(5, 80px); /* 5 oszlop */
+    grid-template-rows: repeat(5, 80px); /* 5 sor */
+    gap: 5px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+    border: 2px solid #000;
+    font-size: 1.5rem; /* Kisebb méret az 5x5-höz */
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    width: 80px; /* Méret a CSS rácshoz igazítva */
+    height: 80px;
+}
+
+.cell.taken {
+    pointer-events: none;
+}
+
+
+.reset-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #5E63BA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    background-color: #8286c9;
+}
+
+.game-status {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}

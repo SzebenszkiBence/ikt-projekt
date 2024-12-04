@@ -76,3 +76,112 @@ const generateKeyboard = () => {
 generateKeyboard();
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const boardContainer = document.querySelector(".board");
+    const resetBtn = document.querySelector(".reset-btn");
+    const statusText = document.querySelector(".game-status");
+
+    const boardSize = 5;
+    const winCondition = 4; 
+    let board = Array(boardSize * boardSize).fill("");
+    let currentPlayer = "X";
+    let gameActive = true;
+
+    
+    const createBoard = () => {
+        boardContainer.innerHTML = "";
+        board = Array(boardSize * boardSize).fill("");
+        for (let i = 0; i < boardSize * boardSize; i++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.setAttribute("data-index", i);
+            boardContainer.appendChild(cell);
+        }
+    };
+
+    const checkWinner = () => {
+        for (let row = 0; row < boardSize; row++) {
+            for (let col = 0; col < boardSize; col++) {
+                const index = row * boardSize + col;
+
+                if (board[index] === "") continue;
+
+                
+                if (
+                    col + winCondition <= boardSize &&
+                    board[index] === board[index + 1] &&
+                    board[index] === board[index + 2] &&
+                    board[index] === board[index + 3]
+                ) return true;
+
+            
+                if (
+                    row + winCondition <= boardSize &&
+                    board[index] === board[index + boardSize] &&
+                    board[index] === board[index + 2 * boardSize] &&
+                    board[index] === board[index + 3 * boardSize]
+                ) return true;
+
+            
+                if (
+                    col + winCondition <= boardSize &&
+                    row + winCondition <= boardSize &&
+                    board[index] === board[index + boardSize + 1] &&
+                    board[index] === board[index + 2 * (boardSize + 1)] &&
+                    board[index] === board[index + 3 * (boardSize + 1)]
+                ) return true;
+
+        
+                if (
+                    col - (winCondition - 1) >= 0 &&
+                    row + winCondition <= boardSize &&
+                    board[index] === board[index + boardSize - 1] &&
+                    board[index] === board[index + 2 * (boardSize - 1)] &&
+                    board[index] === board[index + 3 * (boardSize - 1)]
+                ) return true;
+            }
+        }
+        return false;
+    };
+
+    const handleCellClick = (e) => {
+        const cell = e.target;
+        const index = parseInt(cell.getAttribute("data-index"), 10);
+
+        if (board[index] !== "" || !gameActive) return;
+
+        board[index] = currentPlayer;
+        cell.innerText = currentPlayer;
+        cell.classList.add("taken");
+
+        if (checkWinner()) {
+            statusText.innerText = `Player ${currentPlayer} Wins!`;
+            gameActive = false;
+            return;
+        }
+
+        if (!board.includes("")) {
+            statusText.innerText = "It's a Draw!";
+            gameActive = false;
+            return;
+        }
+
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+        statusText.innerText = `Player ${currentPlayer}'s turn`;
+    };
+
+    const resetGame = () => {
+        gameActive = true;
+        currentPlayer = "X";
+        statusText.innerText = `Player X's turn`;
+        createBoard();
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach((cell) => cell.addEventListener("click", handleCellClick));
+    };
+
+    resetBtn.addEventListener("click", resetGame);
+
+    createBoard();
+    resetGame(); 
+});
