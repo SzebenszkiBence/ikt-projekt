@@ -9,7 +9,6 @@ const hintText = document.querySelector(".hint-text b");
 let currentWord, currentHint, correctLetters, wrongGuessCount;
 const maxGuesses = 10;
 
-
 const resetGame = () => {
     correctLetters = [];
     wrongGuessCount = 0;
@@ -32,9 +31,9 @@ const getRandomWord = () => {
 };
 
 const gameOver = (isVictory) => {
-    gameModal.querySelector("h4").innerText = isVictory ? 'Gratulálok!' : 'Nem talált!';
-    const modalText = isVictory ? `Eltaláltad:` : "A helyes válasz:";
+    const modalText = isVictory ? `You found the word:` : "The correct word was:";
     gameModal.querySelector("img").src = `images/${isVictory ? "victory" : "lost"}.gif`;
+    gameModal.querySelector("h4").innerText = isVictory ? "Congrats!" : "Game Over!";
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 };
@@ -52,6 +51,7 @@ const initGame = (button, clickedLetter) => {
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
 
+        // Tipp megjelenítése 3 rossz találat után
         if (wrongGuessCount === 3) {
             hintText.innerText = currentHint;
         }
@@ -64,12 +64,15 @@ const initGame = (button, clickedLetter) => {
     if (correctLetters.length === currentWord.length) return gameOver(true);
 };
 
-letters.split("").forEach(char => {
-    const button = document.createElement("button");
-    button.innerText = char;
-    keyboardDiv.appendChild(button);
-    button.addEventListener("click", (e) => initGame(e.target, char));
-});
+const generateKeyboard = () => {
+    const letters = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
+    letters.split("").forEach((char) => {
+        const button = document.createElement("button");
+        button.innerText = char;
+        keyboardDiv.appendChild(button);
+        button.addEventListener("click", (e) => initGame(e.target, char));
+    });
+};
 
 generateKeyboard();
 getRandomWord();
