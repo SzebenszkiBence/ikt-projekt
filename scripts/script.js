@@ -51,7 +51,6 @@ const initGame = (button, clickedLetter) => {
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
 
-        // Tipp megjelenítése 3 rossz találat után
         if (wrongGuessCount === 3) {
             hintText.innerText = currentHint;
         }
