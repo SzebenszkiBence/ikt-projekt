@@ -42,6 +42,7 @@ const wordList = [
     {
         word: "alázat",
         hint: "Az a tulajdonság, hogy valaki nem tekinti magát másoknál fontosabbnak, és tisztelettel viszonyul másokhoz."
+    },
     {
         word: "táska",
         hint: "Olyan eszköz, amelyet az emberek arra használnak, hogy kisebb dolgokat tartsanak benne és magukkal vigyék."
@@ -211,4 +212,3 @@ const wordList = [
         hint: "A legsötétebb szín, amely minden fényt elnyel."
     }
 ];
-  ];

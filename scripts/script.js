@@ -9,8 +9,6 @@ const hintText = document.querySelector(".hint-text b");
 let currentWord, currentHint, correctLetters, wrongGuessCount;
 const maxGuesses = 10;
 
-const letters = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
-const maxGuesses = 10;
 
 const resetGame = () => {
     correctLetters = [];
@@ -34,12 +32,9 @@ const getRandomWord = () => {
 };
 
 const gameOver = (isVictory) => {
-    const modalText = isVictory ? `Kitaláltad:` : 'A helyes válasz:';
-    gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gif`;
     gameModal.querySelector("h4").innerText = isVictory ? 'Gratulálok!' : 'Nem talált!';
     const modalText = isVictory ? `Eltaláltad:` : "A helyes válasz:";
     gameModal.querySelector("img").src = `images/${isVictory ? "victory" : "lost"}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? "Gratulálok!" : "Game Over!";
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 };
