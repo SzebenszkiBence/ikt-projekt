@@ -5,14 +5,18 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 }
+
+
+
 body {
     display: flex;
-    flex-direction: column; /* Fejléc miatt oszlop irány */
+    flex-direction: column;
     padding: 0 10px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #112b2b;
+    background: linear-gradient(to bottom, #343770, #112b2b);
+
 }
 
 .header {
@@ -20,10 +24,10 @@ body {
     background-color: #00ff00;
     padding: 10px 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Középre igazítás és balra helyezés */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék */
-    position: fixed; /* A fejléc rögzítése a lap tetejére */
+    align-items: flex-start;
+    justify-content: space-between; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -46,16 +50,16 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    text-align: center; /* Középre igazított cím */
+    text-align: center;
 }
 
 .container {
-    margin-top: 85px; /* A fejléc alá igazítás */
+    margin-top: 85px;
     display: flex;
     width: 850px;
     gap: 70px;
     padding: 60px 40px;
-    background: #fff;
+    background: #e0d2d2;
     border-radius: 10px;
     align-items: flex-end;
     justify-content: space-between;
@@ -72,6 +76,7 @@ body {
     text-align: center;
     margin-top: 20px;
     text-transform: uppercase;
+    color: #ff6f3c;
 }
 
 .game-box .word-display {
@@ -89,17 +94,20 @@ body {
     font-weight: 600;
     margin-bottom: 40px;
     text-transform: uppercase;
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid #2c3e50;
+    color: #2c3e50;
 }
 .word-display .letter.guessed {
     margin: -40px 0 35px;
     border-color: transparent;
+    color: #28a745;
 }
 .game-box h4 {
     text-align: center;
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 15px;
+    color: #112b2b;
 }
 .game-box h4 b {
     font-weight: 600;

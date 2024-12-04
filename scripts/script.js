@@ -31,9 +31,9 @@ const getRandomWord = () => {
 };
 
 const gameOver = (isVictory) => {
-    const modalText = isVictory ? `Eltaláltad:` : "A helyes válasz:";
+    const modalText = isVictory ? `You found the word:` : "The correct word was:";
     gameModal.querySelector("img").src = `images/${isVictory ? "victory" : "lost"}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? "Gratulálok!" : "Game Over!";
+    gameModal.querySelector("h4").innerText = isVictory ? "Congrats!" : "Game Over!";
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 };
