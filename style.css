@@ -21,7 +21,7 @@ body {
 
 .header {
     width: 100%;
-    background-color: #00ff00;
+    background-color: #00cc00;
     padding: 10px 20px;
     display: flex;
     align-items: flex-start;
@@ -100,7 +100,7 @@ body {
 .word-display .letter.guessed {
     margin: -40px 0 35px;
     border-color: transparent;
-    color: #28a745;
+    color: #00cc00;
 }
 .game-box h4 {
     text-align: center;
@@ -131,7 +131,7 @@ body {
     font-weight: 600;
     border-radius: 4px;
     text-transform: uppercase;
-    background: #00ff00;
+    background: #00cc00;
 }
 .keyboard button {
     padding: 7px;
